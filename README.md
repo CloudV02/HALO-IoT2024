@@ -2,8 +2,9 @@
 
 ### For developer (Recommended)
 
-Run `npm run start` in the project root folder.
-The frontend will be on `http://localhost:1444` and server will be on `http://localhost:1443`
+- From the project root folder, `cd front` and `npm install` to install dependencies in front. Similarly, `cd server` and `npm install` to install dependencies in server.
+
+- After that, run `npm run start` in the project root folder. The frontend will be on `http://localhost:1444` and server will be on `http://localhost:1443`
 
 ### For user
 
