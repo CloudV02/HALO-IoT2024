@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: ./docker/Dockerfile
-    image: duchung0312/airmonitor:v0.0.0
+    image: duchung0312/airmonitor:v0.0.2
     container_name: airmonitor
     restart: always
     privileged: true
@@ -17,12 +17,12 @@ services:
         max-size: 10m
     environment:
       NODE_ENV: production
-      SQLITE_FILE_PATH: /var/lib/gladysassistant/gladys-production.db
+      SQLITE_FILE_PATH: /var/lib/airmonitor/airmonitor-production.db
       SERVER_PORT: 1080
       TZ: Asia/Bangkok
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - /var/lib/gladysassistant:/var/lib/gladysassistant
+      - /var/lib/airmonitor:/var/lib/airmonitor
       - /dev:/dev
       - /run/udev:/run/udev:ro
   watchtower:
