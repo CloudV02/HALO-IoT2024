@@ -5,7 +5,7 @@ const os = require('os');
 const logger = require('../../../utils/logger');
 const { DEFAULT } = require('./constants');
 
-const MOSQUITTO_DIRECTORY = '/var/lib/gladysassistant/mosquitto';
+const MOSQUITTO_DIRECTORY = '/var/lib/airmonitor/mosquitto';
 const MOSQUITTO_CONFIG_FILE_PATH = `${MOSQUITTO_DIRECTORY}/mosquitto.conf`;
 const MOSQUITTO_PASSWORD_FILE_PATH = `${MOSQUITTO_DIRECTORY}/mosquitto.passwd`;
 

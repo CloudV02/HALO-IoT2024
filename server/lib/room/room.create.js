@@ -1,5 +1,5 @@
 const db = require('../../models');
-const { NotFoundError } = require('../../utils/coreErrors');
+const { NotFoundError, ConflictError } = require('../../utils/coreErrors');
 
 /**
  * @description Create a room in a house.
@@ -8,7 +8,8 @@ const { NotFoundError } = require('../../utils/coreErrors');
  * @returns {Promise<object>} Resolve with created room.
  * @example
  * gladys.room.create('my-house', {
- *    name: 'Kitchen'
+ *    name: 'Kitchen',
+ * 
  * });
  */
 async function create(selector, room) {

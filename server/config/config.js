@@ -54,7 +54,7 @@ module.exports = {
       name: 'query',
       max: 5,
     },
-    backupsFolder: process.env.BACKUP_FOLDER || '/var/lib/gladysassistant/backups',
+    backupsFolder: process.env.BACKUP_FOLDER || '/var/lib/airmonitor/backups',
     gladysGatewayServerUrl: process.env.GLADYS_GATEWAY_SERVER_URL || 'https://api.gladysgateway.com',
     dockerImage: 'gladysassistant/gladys',
     tempFolder: '/tmp/gladysassistant',

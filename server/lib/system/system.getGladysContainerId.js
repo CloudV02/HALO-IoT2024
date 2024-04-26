@@ -1,7 +1,7 @@
 const fs = require('fs');
 const { PlatformNotCompatible } = require('../../utils/coreErrors');
 
-const CIDFILE_FILE_PATH_IN_CONTAINER = '/var/lib/gladysassistant/containerId';
+const CIDFILE_FILE_PATH_IN_CONTAINER = '/var/lib/airmonitor/containerId';
 
 /**
  * @description Returns the containerId defined on cidfile.

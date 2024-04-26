@@ -37,15 +37,15 @@ describe('mqttHandler.configureContainer', () => {
     const mqttHandler = new MqttHandler(gladys, mqttClient, serviceId);
     await mqttHandler.configureContainer();
 
-    assert.calledOnceWithExactly(fsMock.mkdir, '/var/lib/gladysassistant/mosquitto', { recursive: true });
+    assert.calledOnceWithExactly(fsMock.mkdir, '/var/lib/airmonitor/mosquitto', { recursive: true });
     assert.calledOnceWithExactly(
       fsMock.access,
-      '/var/lib/gladysassistant/mosquitto/mosquitto.conf',
+      '/var/lib/airmonitor/mosquitto/mosquitto.conf',
       // eslint-disable-next-line no-bitwise
       constants.R_OK | constants.W_OK,
     );
-    assert.calledOnceWithExactly(fsMock.readFile, '/var/lib/gladysassistant/mosquitto/mosquitto.conf');
-    assert.calledOnceWithExactly(fsMock.open, '/var/lib/gladysassistant/mosquitto/mosquitto.passwd', 'w');
+    assert.calledOnceWithExactly(fsMock.readFile, '/var/lib/airmonitor/mosquitto/mosquitto.conf');
+    assert.calledOnceWithExactly(fsMock.open, '/var/lib/airmonitor/mosquitto/mosquitto.passwd', 'w');
     assert.notCalled(fsMock.appendFile);
     assert.notCalled(fsMock.writeFile);
   });
@@ -54,20 +54,20 @@ describe('mqttHandler.configureContainer', () => {
     const mqttHandler = new MqttHandler(gladys, mqttClient, serviceId);
     await mqttHandler.configureContainer();
 
-    assert.calledOnceWithExactly(fsMock.mkdir, '/var/lib/gladysassistant/mosquitto', { recursive: true });
+    assert.calledOnceWithExactly(fsMock.mkdir, '/var/lib/airmonitor/mosquitto', { recursive: true });
     assert.calledOnceWithExactly(
       fsMock.access,
-      '/var/lib/gladysassistant/mosquitto/mosquitto.conf',
+      '/var/lib/airmonitor/mosquitto/mosquitto.conf',
       // eslint-disable-next-line no-bitwise
       constants.R_OK | constants.W_OK,
     );
-    assert.calledOnceWithExactly(fsMock.readFile, '/var/lib/gladysassistant/mosquitto/mosquitto.conf');
+    assert.calledOnceWithExactly(fsMock.readFile, '/var/lib/airmonitor/mosquitto/mosquitto.conf');
     assert.calledOnceWithExactly(
       fsMock.appendFile,
-      '/var/lib/gladysassistant/mosquitto/mosquitto.conf',
+      '/var/lib/airmonitor/mosquitto/mosquitto.conf',
       `${os.EOL}listener 1883`,
     );
-    assert.calledOnceWithExactly(fsMock.open, '/var/lib/gladysassistant/mosquitto/mosquitto.passwd', 'w');
+    assert.calledOnceWithExactly(fsMock.open, '/var/lib/airmonitor/mosquitto/mosquitto.passwd', 'w');
     assert.notCalled(fsMock.writeFile);
   });
 
@@ -77,10 +77,10 @@ describe('mqttHandler.configureContainer', () => {
     const mqttHandler = new MqttHandler(gladys, mqttClient, serviceId);
     await mqttHandler.configureContainer();
 
-    assert.calledOnceWithExactly(fsMock.mkdir, '/var/lib/gladysassistant/mosquitto', { recursive: true });
+    assert.calledOnceWithExactly(fsMock.mkdir, '/var/lib/airmonitor/mosquitto', { recursive: true });
     assert.calledOnceWithExactly(
       fsMock.access,
-      '/var/lib/gladysassistant/mosquitto/mosquitto.conf',
+      '/var/lib/airmonitor/mosquitto/mosquitto.conf',
       // eslint-disable-next-line no-bitwise
       constants.R_OK | constants.W_OK,
     );
@@ -88,9 +88,9 @@ describe('mqttHandler.configureContainer', () => {
     assert.notCalled(fsMock.appendFile);
     assert.calledOnceWithExactly(
       fsMock.writeFile,
-      '/var/lib/gladysassistant/mosquitto/mosquitto.conf',
+      '/var/lib/airmonitor/mosquitto/mosquitto.conf',
       `allow_anonymous false${os.EOL}connection_messages false${os.EOL}password_file /mosquitto/config/mosquitto.passwd${os.EOL}listener 1883`,
     );
-    assert.calledOnceWithExactly(fsMock.open, '/var/lib/gladysassistant/mosquitto/mosquitto.passwd', 'w');
+    assert.calledOnceWithExactly(fsMock.open, '/var/lib/airmonitor/mosquitto/mosquitto.passwd', 'w');
   });
 });

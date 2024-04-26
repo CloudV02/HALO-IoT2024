@@ -84,24 +84,13 @@ const EditHouse = ({ children, ...props }) => (
                 onInput={props.updateNewRoomName}
                 class="form-control"
               >
-                <option value="CO">
-                  <Text id="signup.configureHouse.sensorTypes.CO" />
-                </option>
-                <option value="CO2">
-                  <Text id="signup.configureHouse.sensorTypes.CO2" />
-                </option>
-                <option value="NO">
-                  <Text id="signup.configureHouse.sensorTypes.NO" />
-                </option>
-                <option value="Humidity">
-                  <Text id="signup.configureHouse.sensorTypes.Hum" />
-                </option>
-                <option value="Temperature">
-                  <Text id="signup.configureHouse.sensorTypes.Temp" />
-                </option>
-                <option value="Time">
-                  <Text id="signup.configureHouse.sensorTypes.Time" />
-                </option>
+                {['CO', 'CO2', 'NO', 'Hum', 'Temp', 'Time'].map((optionValue, index) => {
+                  return (
+                    <option key={index} value={`${optionValue} (${props.house.name})`}>
+                      <Text id={`signup.configureHouse.sensorTypes.${optionValue}`} />
+                    </option>
+                  );
+                })}
               </select>
               <div class="invalid-feedback">
                 <Text id="signup.configureHouse.alarmDelayBeforeArmingError" />

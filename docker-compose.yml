@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: ./docker/Dockerfile
-    image: duchung0312/airmonitor:v0.0.2
+    image: duchung0312/airmonitor:v0.0.1
     container_name: airmonitor
     restart: always
     privileged: true

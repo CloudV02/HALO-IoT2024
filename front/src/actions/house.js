@@ -242,6 +242,7 @@ function createActions(store) {
         });
         store.setState(newState);
       } catch (e) {
+        console.log(e);
         const status = get(e, 'response.status');
         const url = get(e, 'response.config.url');
         if (status === 409 && url.endsWith('/room')) {

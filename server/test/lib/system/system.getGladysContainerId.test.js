@@ -79,7 +79,7 @@ describe('system.getGladysContainerId', () => {
           918 888 179:2 /var/lib/docker/containers/83fa542c0b140e45e63ad7263c539ac08e2cbf7916894f1c51c3f016397b168e/resolv.conf /etc/resolv.conf rw,noatime - ext4 /dev/root rw
           1075 888 179:2 /var/lib/docker/containers/83fa542c0b140e45e63ad7263c539ac08e2cbf7916894f1c51c3f016397b168e/hostname /etc/hostname rw,noatime - ext4 /dev/root rw
           1077 888 179:2 /var/lib/docker/containers/83fa542c0b140e45e63ad7263c539ac08e2cbf7916894f1c51c3f016397b168e/hosts /etc/hosts rw,noatime - ext4 /dev/root rw
-          1099 888 179:2 /home/pi/data/gladys /var/lib/gladysassistant rw,noatime - ext4 /dev/root rw
+          1099 888 179:2 /home/pi/data/gladys /var/lib/airmonitor rw,noatime - ext4 /dev/root rw
           632 888 0:21 /docker.sock /run/docker.sock rw,nosuid,nodev - tmpfs tmpfs rw,size=777088k,nr_inodes=819200,mode=755
     `;
 
@@ -128,14 +128,14 @@ describe('system.getGladysContainerId', () => {
   });
 
   it('should return containerId through cidfile', async () => {
-    FsMock.promises.access.withArgs('/var/lib/gladysassistant/containerId').resolves(null);
+    FsMock.promises.access.withArgs('/var/lib/airmonitor/containerId').resolves(null);
     FsMock.promises.readFile.resolves('967ef3114fa2ceb8c4f6dbdbc78ee411a6f33fb1fe1d32455686ef6e89f41d1c');
     const containerId = await system.getGladysContainerId();
     expect(containerId).to.eq('967ef3114fa2ceb8c4f6dbdbc78ee411a6f33fb1fe1d32455686ef6e89f41d1c');
   });
   it('should return containerId through exec in mountinfo (Debian 11)', async () => {
     FsMock.promises.access
-      .withArgs('/var/lib/gladysassistant/containerId')
+      .withArgs('/var/lib/airmonitor/containerId')
       .rejects()
       .withArgs('/proc/self/cgroup')
       .resolves(null)
@@ -151,7 +151,7 @@ describe('system.getGladysContainerId', () => {
   });
   it('should return containerId through exec in mountinfo (Debian 11) when cgroup does not exist', async () => {
     FsMock.promises.access
-      .withArgs('/var/lib/gladysassistant/containerId')
+      .withArgs('/var/lib/airmonitor/containerId')
       .rejects()
       .withArgs('/proc/self/cgroup')
       .rejects()
@@ -163,7 +163,7 @@ describe('system.getGladysContainerId', () => {
   });
   it('should return containerId through exec in cgroup v2 (Debian 11)', async () => {
     FsMock.promises.access
-      .withArgs('/var/lib/gladysassistant/containerId')
+      .withArgs('/var/lib/airmonitor/containerId')
       .rejects()
       .withArgs('/proc/self/cgroup')
       .resolves(null);
@@ -173,7 +173,7 @@ describe('system.getGladysContainerId', () => {
   });
   it('should return containerId through exec in cgroup v2 (Debian 11) with containerId not on first line', async () => {
     FsMock.promises.access
-      .withArgs('/var/lib/gladysassistant/containerId')
+      .withArgs('/var/lib/airmonitor/containerId')
       .rejects()
       .withArgs('/proc/self/cgroup')
       .resolves(null);
@@ -183,7 +183,7 @@ describe('system.getGladysContainerId', () => {
   });
   it('should return containerId through exec in cgroup v1 (Debian 10)', async () => {
     FsMock.promises.access
-      .withArgs('/var/lib/gladysassistant/containerId')
+      .withArgs('/var/lib/airmonitor/containerId')
       .rejects()
       .withArgs('/proc/self/cgroup')
       .resolves(null);
@@ -193,7 +193,7 @@ describe('system.getGladysContainerId', () => {
   });
   it('should return containerId through exec in cgroup v1 (Debian 10) with containerId not on first line', async () => {
     FsMock.promises.access
-      .withArgs('/var/lib/gladysassistant/containerId')
+      .withArgs('/var/lib/airmonitor/containerId')
       .rejects()
       .withArgs('/proc/self/cgroup')
       .resolves(null);
@@ -203,7 +203,7 @@ describe('system.getGladysContainerId', () => {
   });
   it('should return error, system not compatible', async () => {
     FsMock.promises.access
-      .withArgs('/var/lib/gladysassistant/containerId')
+      .withArgs('/var/lib/airmonitor/containerId')
       .rejects()
       .withArgs('/proc/self/mountinfo')
       .rejects()

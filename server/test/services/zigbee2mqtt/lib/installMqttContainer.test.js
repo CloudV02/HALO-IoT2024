@@ -50,7 +50,7 @@ describe('zigbee2mqtt installMqttContainer', () => {
         createContainer: fake.resolves(true),
         exec: fake.resolves(true),
         getGladysBasePath: fake.resolves({
-          basePathOnHost: '/var/lib/gladysassistant',
+          basePathOnHost: '/var/lib/airmonitor',
           basePathOnContainer: TEMP_GLADYS_FOLDER,
         }),
       },

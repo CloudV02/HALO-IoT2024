@@ -5,7 +5,7 @@
  * const { basePathOnContainer, basePathOnHost } = await getGladysBasePath();
  */
 async function getGladysBasePath() {
-  let basePathOnContainer = '/var/lib/gladysassistant';
+  let basePathOnContainer = '/var/lib/airmonitor';
   // Fetch container path mount
   if (process.env.SQLITE_FILE_PATH) {
     const base = process.env.SQLITE_FILE_PATH;
@@ -22,7 +22,7 @@ async function getGladysBasePath() {
       return { basePathOnContainer, basePathOnHost: baseMount.Source };
     }
   }
-  return { basePathOnContainer, basePathOnHost: '/var/lib/gladysassistant' };
+  return { basePathOnContainer, basePathOnHost: '/var/lib/airmonitor' };
 }
 
 module.exports = {

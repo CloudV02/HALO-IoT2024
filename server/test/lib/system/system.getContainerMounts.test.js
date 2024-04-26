@@ -58,7 +58,7 @@ describe('system.getContainerMounts', () => {
     assert.match(binds, [
       {
         Source: '/home/myname/gladys',
-        Destination: '/var/lib/gladysassistant',
+        Destination: '/var/lib/airmonitor',
       },
     ]);
   });

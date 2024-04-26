@@ -45,21 +45,21 @@ describe('system.getGladysBasePath', () => {
   it('should return default basePath because no mount', async () => {
     const result = await system.getGladysBasePath();
     expect(result).to.deep.equal({
-      basePathOnHost: '/var/lib/gladysassistant',
-      basePathOnContainer: '/var/lib/gladysassistant',
+      basePathOnHost: '/var/lib/airmonitor',
+      basePathOnContainer: '/var/lib/airmonitor',
     });
   });
   it('should return basePath from mount without SQLITE_FILE_PATH env variable', async () => {
     system.getContainerMounts = fake.resolves([
       {
         Source: '/var/lib/dir_on_host',
-        Destination: '/var/lib/gladysassistant',
+        Destination: '/var/lib/airmonitor',
       },
     ]);
     const result = await system.getGladysBasePath();
     expect(result).to.deep.equal({
       basePathOnHost: '/var/lib/dir_on_host',
-      basePathOnContainer: '/var/lib/gladysassistant',
+      basePathOnContainer: '/var/lib/airmonitor',
     });
   });
   it('should return basePath from mount with SQLITE_FILE_PATH env variable', async () => {

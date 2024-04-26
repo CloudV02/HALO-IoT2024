@@ -40,8 +40,8 @@ describe('mqttHandler.installContainer', () => {
       system: {
         getNetworkMode: fake.rejects(error),
         getGladysBasePath: fake.resolves({
-          basePathOnHost: '/var/lib/gladysassistant',
-          basePathOnContainer: '/var/lib/gladysassistant',
+          basePathOnHost: '/var/lib/airmonitor',
+          basePathOnContainer: '/var/lib/airmonitor',
         }),
       },
     };
@@ -79,8 +79,8 @@ describe('mqttHandler.installContainer', () => {
         restartContainer: fake.resolves(true),
         getNetworkMode: fake.resolves('host'),
         getGladysBasePath: fake.resolves({
-          basePathOnHost: '/var/lib/gladysassistant',
-          basePathOnContainer: '/var/lib/gladysassistant',
+          basePathOnHost: '/var/lib/airmonitor',
+          basePathOnContainer: '/var/lib/airmonitor',
         }),
       },
       variable: {
@@ -121,8 +121,8 @@ describe('mqttHandler.installContainer', () => {
         restartContainer: fake.resolves(true),
         getNetworkMode: fake.resolves('host'),
         getGladysBasePath: fake.resolves({
-          basePathOnHost: '/var/lib/gladysassistant',
-          basePathOnContainer: '/var/lib/gladysassistant',
+          basePathOnHost: '/var/lib/airmonitor',
+          basePathOnContainer: '/var/lib/airmonitor',
         }),
       },
       variable: {

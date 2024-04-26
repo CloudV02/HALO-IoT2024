@@ -18,6 +18,7 @@ class EditHouseComponent extends Component {
     return errors;
   };
   updateNewRoomName = e => {
+    const timestamp = Date.now(); // Generate a timestamp dynamically
     this.setState({
       newRoomName: e.target.value
     });
